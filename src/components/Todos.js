@@ -1,15 +1,16 @@
 import React from 'react';
+import TodoItem from './TodoItem';
 
 function Todos(props) {
   return (
     <div className="todos">
       <h1>Todos</h1>
-      count: {props.todos.length}
+      <b>count</b>: {props.todos.length}
        {
-         props.todos.map((todo) => 
-           <h3>{ todo.title }</h3>
-         )
-      }
+         props.todos.map((todo) => (
+           <TodoItem key={todo.id} todo={todo} />
+         ))
+        }
     </div>
   );
 }
