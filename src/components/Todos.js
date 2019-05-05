@@ -9,7 +9,9 @@ function Todos(props) {
       <b>count</b>: {props.todos.length}
        {
          props.todos.map((todo) => (
-           <TodoItem key={todo.id} todo={todo} />
+           <TodoItem key={todo.id} todo={todo}
+              toggleCompleted={props.toggleCompleted}
+              deleteTodo={props.deleteTodo} />
          ))
         }
     </div>

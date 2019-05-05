@@ -20,11 +20,28 @@ class App extends Component {
     ]
   }
 
+
+  toggleCompleted = (id) => {
+    this.setState({ todos: this.state.todos.map(todo => {
+      if(todo.id === id) {
+        todo.completed = !todo.completed
+      }
+      return todo;
+    }) });
+  }
+
+  deleteTodo = (id) => {
+    this.setState(
+      {todos: this.state.todos.filter(todo => todo.id !== id)}
+    );
+  }
+
+
   render() {
     return (
       <div className="App">
       <Header/>
-      <Todos todos={this.state.todos} />
+      <Todos todos={this.state.todos} toggleCompleted={this.toggleCompleted} deleteTodo={this.deleteTodo} />
       </div>
     )
   }

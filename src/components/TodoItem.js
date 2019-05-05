@@ -9,16 +9,29 @@ export class TodoItem extends Component {
             padding: '10px',
             border: "1px #ccc solid"
         }
-    } 
+    }
 
 
   render() {
+    const { title, id, completed } = this.props.todo;
     return (
       <div style={this.itemStyle()}>
-        {this.props.todo.title}
+        <input type="checkbox" checked={completed} onChange={this.props.toggleCompleted.bind(this, id)} />
+        {title}
+        {' '}
+        <button style={deleteBtnStyle} onClick={this.props.deleteTodo.bind(this, id)}>X</button>
       </div>
     )
   }
+}
+
+
+
+const deleteBtnStyle = {
+    backgroundColor: "#f00",
+    color: "#fff",
+    borderRadius: "50%",
+    border: "none"
 }
 
 
