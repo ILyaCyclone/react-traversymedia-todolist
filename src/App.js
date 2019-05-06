@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import axios from 'axios';
-import uuid from 'uuid';
+// import uuid from 'uuid'; // how to use it: const id = uuid.v4(); 
 
 import logo from './logo.svg';
 import './App.css';
