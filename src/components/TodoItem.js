@@ -28,10 +28,13 @@ export class TodoItem extends Component {
 
 
 const deleteBtnStyle = {
-    backgroundColor: "#f00",
-    color: "#fff",
-    borderRadius: "50%",
-    border: "none"
+  background: '#ff0000',
+  color: '#fff',
+  border: 'none',
+  padding: '5px 9px',
+  borderRadius: '50%',
+  cursor: 'pointer',
+  float: 'right'
 }
 
 

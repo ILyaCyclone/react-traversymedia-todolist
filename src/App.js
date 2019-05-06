@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Todos from './components/Todos';
+import AddTodo from './components/AddTodo';
 import Header from './components/layout/Header';
 
 class App extends Component {
@@ -30,6 +31,7 @@ class App extends Component {
     }) });
   }
 
+
   deleteTodo = (id) => {
     this.setState(
       {todos: this.state.todos.filter(todo => todo.id !== id)}
@@ -37,11 +39,24 @@ class App extends Component {
   }
 
 
+  onAddTodo = (title) => {
+    const newTodo = {
+      id: 4, //TODO generate unique ID
+      title,
+      completed: false
+    }
+    this.setState({todos: [...this.state.todos, newTodo]});
+  }
+
+
   render() {
     return (
       <div className="App">
-      <Header/>
-      <Todos todos={this.state.todos} toggleCompleted={this.toggleCompleted} deleteTodo={this.deleteTodo} />
+        <div className="container">
+          <Header/>
+          <AddTodo onAddTodo={this.onAddTodo}/>
+          <Todos todos={this.state.todos} toggleCompleted={this.toggleCompleted} deleteTodo={this.deleteTodo} />
+        </div>
       </div>
     )
   }
