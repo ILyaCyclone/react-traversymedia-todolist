@@ -36,9 +36,11 @@ class App extends Component {
 
 
   deleteTodo = (id) => {
-    this.setState(
-      {todos: this.state.todos.filter(todo => todo.id !== id)}
-    );
+    axios.delete(`http://jsonplaceholder.typicode.com/todos/${id}`) // not really deleting on server, so we use filter to "delete" record
+      .then(res => this.setState(
+        {todos: this.state.todos.filter(todo => todo.id !== id)}
+      ));
+    
   }
 
 
