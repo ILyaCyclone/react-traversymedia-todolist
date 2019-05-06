@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
+import axios from 'axios';
 import uuid from 'uuid';
 
 import logo from './logo.svg';
@@ -14,18 +15,13 @@ import AddTodo from './components/AddTodo';
 
 class App extends Component {
   state = {
-    todos: [
-      {
-        id: uuid.v4(),
-        title: 'todo1',
-        completed: false
-      },
-      {
-        id: uuid.v4(),
-        title: 'todo2',
-        completed: true
-      }
-    ]
+    todos: []
+  }
+
+
+  componentDidMount() {
+    axios.get("http://jsonplaceholder.typicode.com/todos?_limit=10")
+      .then(res => this.setState({todos: res.data}));
   }
 
 
