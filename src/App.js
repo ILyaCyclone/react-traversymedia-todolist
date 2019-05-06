@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import uuid from 'uuid';
 import logo from './logo.svg';
 import './App.css';
 import Todos from './components/Todos';
@@ -9,12 +10,12 @@ class App extends Component {
   state = {
     todos: [
       {
-        id: 1,
+        id: uuid.v4(),
         title: 'todo1',
         completed: false
       },
       {
-        id: 2,
+        id: uuid.v4(),
         title: 'todo2',
         completed: true
       }
@@ -41,7 +42,7 @@ class App extends Component {
 
   onAddTodo = (title) => {
     const newTodo = {
-      id: 4, //TODO generate unique ID
+      id: uuid.v4(),
       title,
       completed: false
     }
