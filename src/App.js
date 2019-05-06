@@ -1,10 +1,16 @@
 import React, {Component} from 'react';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import uuid from 'uuid';
+
 import logo from './logo.svg';
 import './App.css';
+
+import Header from './components/layout/Header';
+
+import About from './components/pages/About';
+
 import Todos from './components/Todos';
 import AddTodo from './components/AddTodo';
-import Header from './components/layout/Header';
 
 class App extends Component {
   state = {
@@ -52,13 +58,22 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="container">
-          <Header/>
-          <AddTodo onAddTodo={this.onAddTodo}/>
-          <Todos todos={this.state.todos} toggleCompleted={this.toggleCompleted} deleteTodo={this.deleteTodo} />
+      <Router>
+        <div className="App">
+          <div className="container">
+            <Header/>
+            <Route exact path="/" render={props => (
+              // this is <React.Fragment>
+              <>
+                <AddTodo onAddTodo={this.onAddTodo}/>
+                <Todos todos={this.state.todos} toggleCompleted={this.toggleCompleted} deleteTodo={this.deleteTodo} />
+              </>
+              )}
+            />
+            <Route exact path="/about" component={About} />
+          </div>
         </div>
-      </div>
+      </Router>
     )
   }
 }
