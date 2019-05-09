@@ -8,7 +8,8 @@ class LikeButton extends React.Component {
 
   render() {
     if (this.state.liked) {
-      return 'You liked this. '+window._MyCompData.something;
+      // return 'You liked this. '+window._MyCompData.something;
+      return 'You liked this.,'+this.props.initialName+".";
     }
 
     return (
@@ -19,5 +20,7 @@ class LikeButton extends React.Component {
   }
 }
 
-let domContainer = document.querySelector('#react-container');
-ReactDOM.render(<LikeButton />, domContainer);
+
+const domContainer = document.querySelector('#react-container');
+const initialName = domContainer.dataset.name;
+ReactDOM.render(<LikeButton initialName={initialName} />, domContainer);

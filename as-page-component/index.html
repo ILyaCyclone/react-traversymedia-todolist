@@ -1,10 +1,21 @@
 <html>
 <head>
+<style>
+html {
+    background-color: #aab;
+}
+
+.p-2 {
+    padding: 10px;
+}
+</style>
 </head>
 <body>
 <h1>This is normal page</h1>
 <h3>Here is come ordinary code</h3>
-<div id="react-container"></div>
+<!-- <div id="react-container" data-name="name form the data"></div> -->
+<div id="MySelect1" class="p-2"></div>
+<div id="MySelect2" class="p-2"></div>
 <h3>And there is come ordinary code</h3>
 
 <!-- Load React. -->
@@ -15,8 +26,36 @@
 <script>window._MyCompData = {
     something: "nothing"
 };
+
+window._selectOptionsA = [
+    {value: 1, display: "Val a 1"},
+    {value: 2, display: "Val a 2"},
+    {value: 3, display: "Val a 3"},
+]
+window._selectOptionsB = [
+    {value: 1, display: "Val b 1"},
+    {value: 2, display: "Val b 2"},
+    {value: 3, display: "Val b 3"},
+]
 </script>
-<script src="MyComp.js"></script>
+<!-- <script src="build/MyComp.js"></script> -->
+
+<script>
+function MyComponentInstanceConfig(containerSelector, options, initialValue, parameterName) {
+    return {
+        containerSelector: containerSelector,
+        options: options,
+        initialValue: initialValue,
+        parameterName: parameterName
+    }
+}
+window._MyComponentInstances = [
+    MyComponentInstanceConfig("#MySelect1", window._selectOptionsA, 1, "a"),
+    MyComponentInstanceConfig("#MySelect2", window._selectOptionsB, 3, "b")
+]
+</script>
+
+<script src="build/MySelect.js"></script>
 </body>
 </html>
 
