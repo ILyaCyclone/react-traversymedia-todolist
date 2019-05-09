@@ -13,7 +13,7 @@ html {
 <body>
 <h1>This is normal page</h1>
 <h3>Here is come ordinary code</h3>
-<!-- <div id="react-container" data-name="name form the data"></div> -->
+<div id="LikeButton" data-name="name form the data"></div>
 <div id="MySelect1" class="p-2"></div>
 <div id="MySelect2" class="p-2"></div>
 <h3>And there is come ordinary code</h3>
@@ -23,9 +23,22 @@ html {
     <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
 
-<script>window._MyCompData = {
-    something: "nothing"
-};
+
+<script src="build/LikeButton.js"></script>
+
+
+
+
+<script src="build/MySelect.js"></script>
+<script>
+function MyComponentInstanceConfig(containerSelector, options, initialValue, parameterName) {
+    return {
+        containerSelector: containerSelector,
+        options: options,
+        initialValue: initialValue,
+        parameterName: parameterName
+    }
+}
 
 window._selectOptionsA = [
     {value: 1, display: "Val a 1"},
@@ -37,25 +50,22 @@ window._selectOptionsB = [
     {value: 2, display: "Val b 2"},
     {value: 3, display: "Val b 3"},
 ]
-</script>
-<!-- <script src="build/MyComp.js"></script> -->
 
-<script>
-function MyComponentInstanceConfig(containerSelector, options, initialValue, parameterName) {
-    return {
-        containerSelector: containerSelector,
-        options: options,
-        initialValue: initialValue,
-        parameterName: parameterName
-    }
-}
 window._MyComponentInstances = [
     MyComponentInstanceConfig("#MySelect1", window._selectOptionsA, 1, "a"),
     MyComponentInstanceConfig("#MySelect2", window._selectOptionsB, 3, "b")
 ]
+
+for(let i = 0; i < window._MyComponentInstances.length; i++) {
+    const config = window._MyComponentInstances[i];
+
+    const domContainer = document.querySelector(config.containerSelector);
+    ReactDOM.render(React.createElement(MySelect, {options: config.options, initialValue: config.initialValue, parameterName: config.parameterName})
+        , domContainer);
+}
 </script>
 
-<script src="build/MySelect.js"></script>
+
 </body>
 </html>
 

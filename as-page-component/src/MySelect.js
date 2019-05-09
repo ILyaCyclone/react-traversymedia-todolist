@@ -81,10 +81,10 @@ function MySelect(props) {
 // const initialValue = window._selectInitialValue;
 // ReactDOM.render(<MySelect options={options} initialValue={initialValue}/>, domContainer);
 
-for(let i = 0; i < window._MyComponentInstances.length; i++) {
-    const config = window._MyComponentInstances[i];
+// for(let i = 0; i < window._MyComponentInstances.length; i++) {
+//     const config = window._MyComponentInstances[i];
 
-    const domContainer = document.querySelector(config.containerSelector);
-    ReactDOM.render(<MySelect key={i} options={config.options} initialValue={config.initialValue} parameterName={config.parameterName}/>
-        , domContainer);
-}
+//     const domContainer = document.querySelector(config.containerSelector);
+//     ReactDOM.render(<MySelect key={i} options={config.options} initialValue={config.initialValue} parameterName={config.parameterName}/>
+//         , domContainer);
+// }
